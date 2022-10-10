@@ -60,7 +60,7 @@ function dataAprovacaoUGPDes(data, type, row, meta){
 }
 ```
 
-Query para retornar a data de aprovação
+<h4>Query para retornar a data de aprovação</h4>
 
 ```
 SELECT NVL(TO_CHAR(PROCES.END_DATE,'DD/MM/YYYY', 'nls_date_language = PORTUGUESE'), ' ') AS DATAAPROV
@@ -70,5 +70,36 @@ FROM TAR_PROCES PROCESC
 WHERE PROCESC.NUM_SEQ_ESCOLHID = 10 AND PROCESC.NUM_PROCES = PROCES.NUM_PROCES 
 GROUP BY PROCESC.NUM_PROCES)
 ```
-                                  
-                             
+  
+<h4>Função para retorna a quantidade de dias entre as data</h4>
+
+```       
+function validarData(dataInicio, dataFim){
+	const dateI = dataInicio; // dd/mm/yyyy
+	const dateF = dataFim; // dd/mm/yyyy
+
+	const [day, month, year] = dateI.split('/');
+	const result = [year, month, day].join('-');
+	
+	const [day1, month1, year1] = dateF.split('/');
+	const result1 = [year1, month1, day1].join('-');
+	
+	// 👉️ cálculo do nº. de dias entre duas datas  
+	// Para definir duas datas para duas variáveis
+	var date1 = new Date(result); // yyyy-mm-dd
+	var date2 = new Date(result1);// yyyy-mm-dd
+	  
+	// Para calcular a diferença horária de duas datas
+	var Difference_In_Time = date2.getTime() - date1.getTime();
+	  
+	// Para calcular o nº. de dias entre duas datas
+	var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+	  
+	//Para exibir o nº final. de dias (resultado)
+	if(Difference_In_Days >= 100){
+		alert("***Existe mais de 100 dias no filtro: "+Difference_In_Days+" dias.***");
+		window.location.reload(false);
+	}
+	
+}
+```
