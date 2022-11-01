@@ -103,3 +103,8 @@ function validarData(dataInicio, dataFim){
 	
 }
 ```
+
+<a href="https://github.com/PatrickCavalcant/Fluig/tree/main/E-mail%20Customizado"><h4>E-mail Customizado</h4></a>
+<p align="center">
+    <img src="E-mail Customizado/email.png">
+</p>
