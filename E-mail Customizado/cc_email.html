@@ -1,0 +1,90 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Fluig</title>
+    <link href="${SERVER_URL!''}/globalmailsender/resources/global.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+</head>
+    <style type="text/css">
+        p{
+            text-align: center;
+			font-family: "Times New Roman", Times, serif;
+			font-size: 16px;
+			font-style: italic;
+			text-align: left;
+        }
+		b{
+            text-align: center;
+			font-family: "Times New Roman", Times, serif;
+			font-size: 16px;
+			font-style: italic;
+			text-align: left;
+        }
+        img{
+            text-align: center;
+            margin: 0 auto;
+        }
+      
+    </style>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+    <!--
+    <div align="left">
+        <table cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="${SERVER_URL!''}/globalmailsender/mailSenderHeader?tenantId=${TENANT_ID!''}">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br />
+        -->
+    <p><u>Prezados,</u></p>
+    <br/>
+    <div align="left">
+        <table cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr>
+                    <td>
+                        <p>
+						Conforme solicitação, a Controladoria informa <u>atualização</u> de centro de custo no sistema Tasy e RM.<br/>
+						Por favor acessar a plataforma para mais detalhes.<br/>
+						Ressaltamos a importância da divulgação destas alterações aos demais setores da instituição, para sua efetiva utilização.
+						</p>
+                        <br/>
+                    </td>
+                </tr>
+				<tr>
+                    <td>
+                        <b>Solicitação: </b> ${WDK_ProcessNumber!''}
+                    </td>
+                </tr>
+				<tr>
+                    <td>
+                        <b>Tipo da Solicitação: </b> ${TIPO_SOLI!''}
+                    </td>
+				</td>	
+				<tr>
+					<td>
+                        <b>Centro de Custo: </b> ${CENTRO_CUSTO!''}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Descrição: </b> ${DESCRICAO!''}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+	<p><b><u style='color: red;'>IMPORTANTE:</u></b><br/>
+	1.	No caso de criação de centro de custos, é necessário cadastrar o setor e fazer a devida vinculação com o centro de custo, para que estes possam receber/gerar informações corretamente no sistema TASY. <br/>
+	2.	Ainda no sistema TASY, é necessário cadastrar os mat/med (produtos) que cada centro de custo novo poderá solicitar nas requisições de Almox/Farmácia; <br/>
+	3.	No sistema RM Labore (RH), acompanhar a movimentação dos colaboradores que irão atuar neste centro; <br/>
+	4.	Caso a unidade possua gestão de custos, acompanhar a atualização no sistema de custos Kpih e ajustar as informações da apuração de custos para que este centro receba os rateios pertinentes. <br/>
+	</p>
+</body>
+</html>
