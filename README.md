@@ -72,6 +72,7 @@ GROUP BY PROCESC.NUM_PROCES)
 ```
 
 <h4>Atualizar responsável pela atividade</h4>
+
 ```
 UPDATE TAR_PROCES
 SET CD_MATRICULA = '7403652' 
