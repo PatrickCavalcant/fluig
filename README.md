@@ -60,7 +60,7 @@ function dataAprovacaoUGPDes(data, type, row, meta){
 }
 ```
 
-<h4>Query para retornar a data de aprovação</h4>
+<h4>Query para retornar a data de aprovação da atividade</h4>
 
 ```
 SELECT NVL(TO_CHAR(PROCES.END_DATE,'DD/MM/YYYY', 'nls_date_language = PORTUGUESE'), ' ') AS DATAAPROV
@@ -70,7 +70,14 @@ FROM TAR_PROCES PROCESC
 WHERE PROCESC.NUM_SEQ_ESCOLHID = 10 AND PROCESC.NUM_PROCES = PROCES.NUM_PROCES 
 GROUP BY PROCESC.NUM_PROCES)
 ```
-  
+
+<h4>Atualizar responsável pela atividade</h4>
+```
+UPDATE TAR_PROCES
+SET CD_MATRICULA = '7403652' 
+WHERE NUM_PROCES = '41761' AND NUM_SEQ_MOVTO = '12'
+```
+
 <h4>Função para retorna a quantidade de dias entre as data</h4>
 
 ```       
