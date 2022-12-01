@@ -118,7 +118,7 @@ function validarData(dataInicio, dataFim){
 </p>
 
 <h4>Chamada AJAX para consumir API Fluig</h4>
- Consulta API do Fluig de usuários substitutos - https://{endereço}/api/resource_SubstituteUserServiceRest.html
+ Consultar API do Fluig de usuários substitutos - https://{endereço}/api/resource_SubstituteUserServiceRest.html
  
 ```
 function obterUsuarioSubstituto(){
