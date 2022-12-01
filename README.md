@@ -116,3 +116,27 @@ function validarData(dataInicio, dataFim){
 <p align="center">
     <img src="E-mail Customizado/email.png">
 </p>
+
+<h4>Chamada AJAX para consumir API Fluig</h4>
+ Consulta API do Fluig de usuários substitutos - https://{endereço}/api/resource_SubstituteUserServiceRest.html
+ 
+```
+function obterUsuarioSubstituto(){
+	var companyId = "1";  //Empresa
+	var userId = "7403470"; //Usuário
+	
+	for (j = 1; j <= indexsTableComissao.length; j++) {	
+		
+		$.ajax({
+			url: "/api/public/bpm/substituteUser/getSubstitutesOfUser/"+companyId+"/"+userId,		
+			async : false,
+			method:"GET",
+			success: function(data) {
+				console.log(data); 
+				},error: function() {
+					console.log("erro");  
+				},
+			});
+	}
+}
+```
