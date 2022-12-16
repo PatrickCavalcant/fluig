@@ -79,6 +79,34 @@ SET CD_MATRICULA = '7403652'
 WHERE NUM_PROCES = '41761' AND NUM_SEQ_MOVTO = '12'
 ```
 
+<h4>Tabelas</h4>
+
+```
+EVENT_FICHA - Eventos dos formulários
+EVENT_PROCES - Eventos dos processos
+PROCES_WORKFLOW - Processos 
+FDN_USERTENANT e FDN_USER - Usuários
+TAR_PROCES - Responsável Processo
+```
+
+<h4>Verificar usuários ativos e bloqueados</h4>
+
+```
+SELECT * FROM FDN_USERTENANT WHERE USER_STATE = '1' --Ativos
+SELECT * FROM FDN_USERTENANT WHERE USER_STATE = '2' --Bloquados
+```
+
+<h4>Resetar senha WCMADMIN</h4>
+
+```
+select *  
+from fdn_usertenant  
+where LOGIN = 'wcmadmin' 
+and password = HASHBYTES('md5','adm')
+
+UPDATE fdn_usertenant SET password='b09c600fddc573f117449b3723f23d64' WHERE login='wcmadmin'
+```
+
 <h4>Função para retorna a quantidade de dias entre as data</h4>
 
 ```       
