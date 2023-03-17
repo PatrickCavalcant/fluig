@@ -168,3 +168,47 @@ function obterUsuarioSubstituto(){
 	}
 }
 ```
+
+<h4>Trabalhando com Constraints</h4>
+
+```
+//Seleciona as colunas 
+DatasetFactory.getDataset("DATASET", colunas, filtro, ordenacao);
+
+//Consulta de Dataset via Browser no console 
+var colunas =  new Array("publisherId","documentDescription","documentType"); 
+DatasetFactory.getDataset("document", colunas, null, null);
+
+//Criação dos filtros 
+var colunas =  new Array("publisherId","documentDescription","documentType"); 
+var filtro_1 = DatasetFactory.createConstraint("documentType", 1, 1, ConstraintType.MUST);
+
+var filtros = new Array(filtro_1); 
+DatasetFactory.getDataset("document", colunas, filtros, null);
+
+//Criação do filtro 2 
+var colunas =  new Array("publisherId","documentDescription","documentType"); 
+var filtro_1 = DatasetFactory.createConstraint("documentType", 4, 4, ConstraintType.MUST); 
+var filtro_2 = DatasetFactory.createConstraint("documentDescription", "Form02", "Form02", ConstraintType.MUST);
+
+var filtros = new Array(filtro_1, filtro_2);
+DatasetFactory.getDataset("document", colunas, filtros, null);
+
+//Ordenação da consulta - Ascendente 
+var colunas =  new Array("publisherId","documentDescription","documentType"); 
+var filtro_1 = DatasetFactory.createConstraint("documentType", 4, 4, ConstraintType.MUST);
+
+var ordenacao =  new Array("documentDescription;asc");
+
+var filtros = new Array(filtro_1); 
+DatasetFactory.getDataset("document", colunas, filtros, ordenacao);
+
+//Ordenação da consulta - Descendente 
+var colunas =  new Array("publisherId","documentDescription","documentType"); 
+var filtro_1 = DatasetFactory.createConstraint("documentType", 4, 4, ConstraintType.MUST);
+
+var ordenacao =  new Array("documentDescription;desc");
+
+var filtros = new Array(filtro_1); 
+DatasetFactory.getDataset("document", colunas, filtros, ordenacao);
+```
