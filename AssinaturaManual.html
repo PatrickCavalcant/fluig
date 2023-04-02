@@ -1,0 +1,175 @@
+<html>
+   <head>
+      <link type="text/css" rel="stylesheet" href="css/mcpo.css" />
+      <link type="text/css" rel="stylesheet" href="css/style.css" />
+      <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+
+      <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+      <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+      <script type="text/javascript"  src="/portal/resources/js/mustache/mustache-min.js"></script>
+      <script type="text/javascript"  src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+      <script src="/webdesk/vcXMLRPC.js"></script>
+      <script type="text/javascript" src="js/FLUIGIP.js"></script>
+      <script type="text/javascript" src="js/main.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+
+   </head>
+    <body onload="showCotacoes()"> 
+	
+	<!-- formulário assinatura-->
+	<div class="panel panel-success"  id="panelAssinatura" name="panelAssinatura">
+		<div class="panel-heading">
+			<p class="panel-title">                      
+				<i class="flaticon flaticon-border-color icon-lg"></i>
+				<strong class="fs-xs-margin-left">Assinatura</strong>
+			</p>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="form-group col-sm-12 ms-left"> 
+					<div class="input-group col-sm-12">
+	
+						<div class="col-sm-12 text-right" id="grupoBotaoProduto">
+							<button type="button" class="btn btn-success" name="save" id="save" data-toggle="tooltip" data-placement="bottom" title="Validar assinatura" >
+								<i class="flaticon flaticon-add-box icon-sm"></i>
+									Validar assinatura
+							</button>
+							<button type="button" class="btn btn-danger" name="clear" id="clear" data-toggle="tooltip" data-placement="bottom" title="Limpar assinatura" >
+								<i class="flaticon flaticon-close icon-sm"></i>
+									Limpar assinatura
+							</button>
+						</div>
+						</br>
+						<div class="wrapper">
+						<center> <canvas id="signature-pad" class="signature-pad" width=480 height=150 style="border: 0; border-bottom: 1px dashed #CCC; text-align: center;"></canvas> </center>
+						<div width=480 height=150 style="text-align: center;">
+						Assinatura do cliente</div>	   
+					</div>
+					<input type="hidden" name="imageCheck" id="imageCheck">
+				</div>
+										
+			</div>
+		</div>
+	</div>
+
+	
+	<div class="panel panel-success"  id="panelConfereAssinatura" name="panelConfereAssinatura">
+		<div class="panel-heading">
+			<p class="panel-title">                      
+				<i class="flaticon flaticon-document-approved icon-lg"></i>
+				<strong class="fs-xs-margin-left">Conferência da Assinatura</strong>
+			</p>	
+		</div>	
+	</div>	
+			
+			
+	</br></br></br></br>
+	</br></br></br></br>
+	</br></br></br></br>
+		
+	<!-- Validação da Assinatura -->
+	<div id="divResultado" name="divResultado" width=480 height=150 style="text-align: center;"></div>
+	<input type="hidden" name="divResultadoInput" id="divResultadoInput">
+		
+	</div>	
+	
+		<script src="https://cdn.jsdelivr.net/npm/signature_pad@3.0.0-beta.3/dist/signature_pad.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+        <script type="text/javascript">	
+			function load() {
+				document.body.style.background = "url("+$("#imageCheck").val()+")no-repeat left 950px top 1350px";
+				divResultado.innerText = $("#divResultadoInput").val();
+			}	
+			window.onload = load;
+				
+
+           //Inicio das funções responsaveis pela assinatura manual
+	       function download(dataURL, filename) {
+	           if (navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf("Chrome") === -1) {
+	               window.open(dataURL);
+	           } else {
+	               var blob = dataURLToBlob(dataURL);
+	               var url = window.URL.createObjectURL(blob);
+	
+	               var a = document.createElement("a");
+	               a.style = "display: none";
+	               a.href = url;
+	               a.download = filename;
+	
+	               document.body.appendChild(a);
+	               a.click();
+	
+	               window.URL.revokeObjectURL(url);
+	           }
+	       }
+	
+	       function dataURLToBlob(dataURL) {
+	          
+	           var parts = dataURL.split(';base64,');
+	           var contentType = parts[0].split(":")[1];
+	           var raw = window.atob(parts[1]);
+	           var rawLength = raw.length;
+	           var uInt8Array = new Uint8Array(rawLength);
+	
+	           for (var i = 0; i < rawLength; ++i) {
+	               uInt8Array[i] = raw.charCodeAt(i);
+	           }
+	
+	           return new Blob([uInt8Array], { type: contentType });
+	       }
+	
+	
+	       var signaturePad = new SignaturePad(document.getElementById('signature-pad'), {
+	           backgroundColor: 'rgba(255, 255, 255, 0)',
+	           penColor: 'rgb(0, 0, 0)'
+	       });
+	
+	
+	       var saveButton = document.getElementById('save');
+	       var cancelButton = document.getElementById('clear');
+	
+	
+	
+	       saveButton.addEventListener("click", function(event) {
+	           if (signaturePad.isEmpty()) {
+	               alert("Faça sua assinatura.");
+	           } else {
+	               var dataURL = signaturePad.toDataURL();
+	               //download(dataURL, "signature.png");
+	               //alert(dataURL);
+	               //print(dataURL);
+	               $("#imageCheck").val(dataURL);
+	               
+				   var imagem = $("#imageCheck");
+				   //alert(text.val());
+	               
+	               //var randnum = Math.random();
+				   //var inum = 1;
+				   //var rand1 = Math.round(randnum * (inum-1)) + 1;
+				   //var imagens = new Array;
+				   //imagens[1] = $("#imageCheck");
+				   //var imagem = imagens[rand1];
+				   
+					
+					$("div").css("background", "#f3f3f3 url("+imagem.val()+")no-repeat left 600px top 300px");
+					
+				   //document.body.style.background = "url("+imagem.val()+")no-repeat left 950px top 1000px";
+				   
+				   //div = document.getElementById ("myDiv");
+				   //div.style.background = "#f3f3f3 url("+imagem.val()+")no-repeat left 950px top 1450px";
+				   //document.body.style.background = "#f3f3f3 url('data:image/png;base64,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')no-repeat left top";
+				   //document.getElementById('textP').style.backgroundColor = 'green';	
+	           }
+	       });
+	
+	       cancelButton.addEventListener('click', function(event) {
+	           signaturePad.clear();
+	       });
+	       
+
+		   //Fim das funções responsáveis pela assinatura manual
+		   
+		   
+        </script>
+   </body>
+</html>
