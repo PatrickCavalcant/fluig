@@ -47,7 +47,7 @@ function cancelaMovimenacao(numSolicitacao, cod_empresa){
 	var workflowEngineServiceLocator = workflowEngineServiceProvider.instantiate("com.totvs.technology.ecm.workflow.ws.ECMWorkflowEngineServiceService");
 	var workflowEngineService = workflowEngineServiceLocator.getWorkflowEngineServicePort();
 	return workflowEngineService.cancelInstance("Admin", // E-MAIL GESTOR DO FLUXO
-												"Flu!gSpdm20", // SENHA GESTOR DO FLUXO
+												"TESTE", // SENHA GESTOR DO FLUXO
 												1, // ID EMPRESA
 											   	parseInt(numSolicitacao),
 											   	"7403652", // MATRICULA GESTOR DO FLUXO
