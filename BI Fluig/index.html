@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+		<title>Dashboards - Fluig</title>
+	</head>
+
+	<body>
+
+		<!--Menu-->
+		<footer>
+			<p>Dashboards </p>
+		</footer>
+
+		<!--Estrutura de Dashboards-->
+		<div class="dashboard">
+			<div class="dashboard-row">
+				<div class="dashboard-col">
+					<!--Gráfico de barra-->
+			 		<div class="indicator">	
+						<div class="indicator-bar"></div>
+						<div class="indicator-value"></div>
+					</div>
+			  	</div>
+				<div class="dashboard-col">
+					<!--Gráfico de pizza-->
+					<canvas id="pieChart"></canvas>
+				</div>
+			</div>
+			<div class="dashboard-row">
+				<div class="dashboard-col">
+					<!--Gráfico de barras-->
+					<canvas id="barChart"></canvas>
+				</div>
+				<div class="dashboard-col">
+					<!--Gráfico de linhas-->
+					<canvas id="lineChart"></canvas>
+				</div>
+			</div>
+		</div>
+
+		<!--Rodapé-->
+		<footer>
+			<p>Copyright 2022</p>
+		</footer>
+		<script type="text/javascript" src="custom.js"></script>
+
+	</body>
+</html>
