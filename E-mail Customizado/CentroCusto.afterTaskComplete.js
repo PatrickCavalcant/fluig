@@ -9,7 +9,7 @@ function afterTaskComplete(colleagueId,nextSequenceId,userList){
 	
 		try{
 			var params = new java.util.HashMap();
-			var server = "https://fluight.spdmafiliadas.org.br:8143/";
+			var server = "https://teste.com/";
 			params.put("SERVER_URL", server);
 			params.put("subject", "CENTRO DE CUSTO");
 			params.put("TIPO_SOLI", hAPI.getCardValue("ccTipoSolicitacao2")); // tipo solicitação
