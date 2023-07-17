@@ -50,7 +50,7 @@ function cancelaMovimenacao(numSolicitacao, cod_empresa){
 												"TESTE", // SENHA GESTOR DO FLUXO
 												1, // ID EMPRESA
 											   	parseInt(numSolicitacao),
-											   	"7403652", // MATRICULA GESTOR DO FLUXO
+											   	"", // MATRICULA GESTOR DO FLUXO
 											   	"Cancelamento automatizado da solicitação. Ticket #15314768"); // DESCRIÇÃO DO CANCELAMENTO
 
 }
