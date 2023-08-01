@@ -212,3 +212,21 @@ var ordenacao =  new Array("documentDescription;desc");
 var filtros = new Array(filtro_1); 
 DatasetFactory.getDataset("document", colunas, filtros, ordenacao);
 ```
+
+
+<h4>Localizar tabela do formulário</h4>
+Dataset 'document' 
+Filtrar pelo 'documentPK.documentid', sendo ele o código da pasta
+Pega o número do 'metalistId', sendo adicionado ao final
+ML + 001 = Cód Empresa + 048 = metalistId
+ML001042
+
+Ou 
+
+```
+select owner, table_name, column_name 
+from all_tab_columns 
+where column_name in ('txtSituacao')
+
+```
+txtSituacao = Campo do Formulário
