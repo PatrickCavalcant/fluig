@@ -215,11 +215,11 @@ DatasetFactory.getDataset("document", colunas, filtros, ordenacao);
 
 
 <h4>Localizar tabela do formulário</h4>
-Dataset 'document' 
-Filtrar pelo 'documentPK.documentid', sendo ele o código da pasta
-Pega o número do 'metalistId', sendo adicionado ao final
-ML + 001 = Cód Empresa + 048 = metalistId
-ML001042
+Dataset 'document' <br/>
+Filtrar pelo 'documentPK.documentid', sendo ele o código da pasta.<br/>
+Pega o número do 'metalistId', sendo adicionado ao final.<br/>
+ML + 001 = Cód Empresa + 048 = metalistId<br/>
+ML001042<br/>
 
 Ou 
 
