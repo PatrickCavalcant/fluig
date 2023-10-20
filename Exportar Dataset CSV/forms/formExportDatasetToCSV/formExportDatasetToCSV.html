@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+		<script type="text/javascript" src="scripts.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+					        <label class="control-label" for="codDataset">Código Dataset</label>
+							<div class="form-group">
+								<input type="text" class="form-control" id="codDataset" name="codDataset" />
+						 	</div>
+						</div>
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-primary" id="export" name="export" onclick="exportCSV();" style="margin-top:25px"><strong>Exportar</strong></button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
