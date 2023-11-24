@@ -221,7 +221,7 @@ Pega o número do 'metalistId', sendo adicionado ao final.<br/>
 ML + 001 = Cód Empresa + 048 = metalistId<br/>
 ML001042<br/>
 
-Ou 
+<hr/>
 
 ```
 select owner, table_name, column_name 
@@ -230,3 +230,60 @@ where column_name in ('txtSituacao')
 
 ```
 txtSituacao = Campo do Formulário
+
+<hr/>
+
+```
+SELECT TABLE_NAME FROM information_schema.columns WHERE column_name like '%NOMECAMPOFORM%'
+```
+
+<hr/>
+
+```
+SELECT 
+case when len(CONVERT(VARCHAR(MAX) , d.COD_LISTA)) <=3 then 'ML00' + CONVERT(char(1),d.COD_EMPRESA)+replicate('0',3- len(CONVERT(VARCHAR(MAX) , d.COD_LISTA) )) +  CONVERT(VARCHAR(MAX) , d.COD_LISTA) 
+     else 'ML00' + CONVERT(char(1),d.COD_EMPRESA)+CONVERT(VARCHAR(MAX) , d.COD_LISTA) 
+end as tabela     
+,*  FROM DOCUMENTO d where d.VERSAO_ATIVA =1 and DS_PRINCIPAL_DOCUMENTO ='[nome form]'
+```
+Pega a ML principal
+
+```
+SELECT LISTA_FILHO.COD_TABELA,
+case when   len(CONVERT(VARCHAR(MAX) , COD_LISTA_FILHO)) <=3 then  'ML00' + CONVERT(char(1), LISTA_FILHO.COD_EMPRESA)+replicate('0',3- len(CONVERT(VARCHAR(MAX) , COD_LISTA_FILHO) ))+CONVERT(VARCHAR(MAX) , COD_LISTA_FILHO) 
+     else 'ML00' + CONVERT(char(1), LISTA_FILHO.COD_EMPRESA)+CONVERT(VARCHAR(MAX) , COD_LISTA_FILHO) 
+     end as TABELA    
+FROM 
+	META_LISTA_REL LISTA_FILHO 
+WHERE  
+	LISTA_FILHO.COD_EMPRESA = 1 
+	AND LISTA_FILHO.COD_LISTA_PAI  = (SELECT COD_LISTA FROM DOCUMENTO d where d.VERSAO_ATIVA =1 and DS_PRINCIPAL_DOCUMENTO ='[nome form ]' )
+```
+Pega a ML Filha, quando são os paixfilho
+
+<br/>
+
+<h4>Último acesso de usuário</h4>
+
+```
+SELECT 
+   FDN_USERTENANT.LOGIN,  
+   	CASE 
+   		FDN_USERTENANT.USER_STATE 
+   		WHEN 2 THEN 'Inativo' 
+   		WHEN 1 THEN 'Ativo' 
+   		ELSE '' 
+   		END AS STATUS, 	
+   	
+   	MAX(ACCESS_DATE) ULTIMO_ACESSO 
+   	
+   	
+FROM FDN_USER
+INNER JOIN FDN_USERTENANT ON FDN_USERTENANT.USER_ID = FDN_USER.USER_ID
+INNER JOIN FDN_ACCESSLOG ON FDN_ACCESSLOG.LOGIN=FDN_USERTENANT.LOGIN
+WHERE
+	FDN_USERTENANT.LOGIN NOT IN ('wcmadmin')
+
+
+GROUP BY FDN_USERTENANT.LOGIN , USER_STATE
+```
