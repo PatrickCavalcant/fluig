@@ -260,9 +260,9 @@ WHERE
 	AND LISTA_FILHO.COD_LISTA_PAI  = (SELECT COD_LISTA FROM DOCUMENTO d where d.VERSAO_ATIVA =1 and DS_PRINCIPAL_DOCUMENTO ='[nome form ]' )
 ```
 
-```
-Pega a ML Filha, quando são os paixfilho
 
+Pega a ML Filha, quando são os paixfilho
+```
 SELECT 
 'ML001' + CONVERT(CHAR(10), l.COD_LISTA_PAI)  AS 'TABELA_PRINCIPAL', 
 'ML001' + CONVERT(CHAR(10), l.COD_LISTA_FILHO)  AS 'TABELA_PAIxFILHO', 
@@ -279,9 +279,9 @@ LEFT JOIN SERV_DATASET ds ON ds.COD_DATASET = d.NM_DATASET
 LEFT JOIN META_LISTA_REL l ON l.COD_LISTA_PAI = d.COD_LISTA 
 WHERE p.COD_DEF_PROCES = 'wf_programa_acao_avaliacao' OR ds.COD_DATASET = '' 
 ORDER BY vp.NUM_VERS DESC
+```
 
 <br/>
-```
 
 <h4>Último acesso de usuário</h4>
 
