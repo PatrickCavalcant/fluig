@@ -1,5 +1,8 @@
 # Fluig
-Repositório para armazenamento código utilizado no dia a dia
+[![author](https://img.shields.io/badge/author-patrick-red.svg)](https://www.linkedin.com/in/patrick-cavalcante-moraes-a95635179/) 
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/PatrickCavalcant)
+
+Repositório para armazenamento de código utilizado no dia a dia
 
 <h4>Função para pegar a data de aprovação da atividade</h4>
 
@@ -87,6 +90,7 @@ EVENT_PROCES - Eventos dos processos
 PROCES_WORKFLOW - Processos 
 FDN_USERTENANT e FDN_USER - Usuários
 TAR_PROCES - Responsável Processo
+WCM_PAGE - Páginas
 ```
 
 <h4>Verificar usuários ativos e bloqueados</h4>
@@ -260,8 +264,8 @@ WHERE
 	AND LISTA_FILHO.COD_LISTA_PAI  = (SELECT COD_LISTA FROM DOCUMENTO d where d.VERSAO_ATIVA =1 and DS_PRINCIPAL_DOCUMENTO ='[nome form ]' )
 ```
 
-
 Pega a ML Filha, quando são os paixfilho
+
 ```
 SELECT 
 'ML001' + CONVERT(CHAR(10), l.COD_LISTA_PAI)  AS 'TABELA_PRINCIPAL', 
@@ -309,10 +313,30 @@ GROUP BY FDN_USERTENANT.LOGIN , USER_STATE
 ```
 
 Alterar tamanho da coluna do banco oracle
+
 ```
 SELECT * FROM FLUIG.ML001024
 DESCRIBE FLUIG.ML001024;
 
 ALTER TABLE FLUIG.ML001024
 MODIFY SITE  VARCHAR2(4000);
+```
+
+Ocultar páginas do menu lateral
+
+```
+UPDATE  WCM_PAGE SET HIDDEN='true' WHERE PAGE_COD = 'Código da Página'
+```
+
+Tarefas Atrasadas
+
+```
+SELECT 
+DATE_FORMAT(DEADLINE, '%d-%m-%Y') DEADLINE, 
+DATE_FORMAT(w.END_DATE, '%d-%m-%Y') ENDDATE, 
+DATE_FORMAT(w.START_DATE, '%d-%m-%Y') STARTDATE, 
+w.COD_DEF_PROCES 
+from TAR_PROCES t join PROCES_WORKFLOW w on t.NUM_PROCES = w.NUM_PROCES 
+where t.LOG_ATIV = 1 
+and t.deadline < sysdate(3)
 ```
