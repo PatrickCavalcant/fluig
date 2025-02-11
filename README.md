@@ -91,6 +91,9 @@ PROCES_WORKFLOW - Processos
 FDN_USERTENANT e FDN_USER - Usuários
 TAR_PROCES - Responsável Processo
 WCM_PAGE - Páginas
+FDN_GROUPUSERROLE - Grupos
+DOCUMENTO - Tabela que controla a versão ativa de um dataset de formulário no Fluig
+
 ```
 
 <h4>Verificar usuários ativos e bloqueados</h4>
@@ -340,3 +343,12 @@ from TAR_PROCES t join PROCES_WORKFLOW w on t.NUM_PROCES = w.NUM_PROCES
 where t.LOG_ATIV = 1 
 and t.deadline < sysdate(3)
 ```
+
+Controla a versão do formulário
+```
+Tabela - DOCUMENTO
+Campo - NUM_VERS_PROPRIED
+NUM_DOCTO_PROPRIED - Código da Pasta
+NR_DOCUMENTO - Código do Fomulário
+```
+
