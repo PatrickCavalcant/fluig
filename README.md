@@ -92,7 +92,7 @@ FDN_USERTENANT e FDN_USER - Usuários
 TAR_PROCES - Responsável Processo
 WCM_PAGE - Páginas
 FDN_GROUPUSERROLE - Grupos
-DOCUMENTO - Tabela que controla a versão ativa de um dataset de formulário no Fluig
+DOCUMENTO - Tabela que controla a versão ativa de um dataset de formulário
 
 ```
 
@@ -218,6 +218,11 @@ var ordenacao =  new Array("documentDescription;desc");
 
 var filtros = new Array(filtro_1); 
 DatasetFactory.getDataset("document", colunas, filtros, ordenacao);
+
+//Contar a quantidade de registros
+var dataset = DatasetFactory.getDataset("document", colunas, filtros, ordenacao); 
+var rowsCount = dataset.values.length; 
+rowsCount
 ```
 
 
