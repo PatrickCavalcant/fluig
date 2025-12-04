@@ -93,6 +93,7 @@ TAR_PROCES - Responsável Processo
 WCM_PAGE - Páginas
 FDN_GROUPUSERROLE - Grupos
 DOCUMENTO - Tabela que controla a versão ativa de um dataset de formulário
+SERV_DATASET - Dataset
 
 ```
 
