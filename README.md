@@ -358,3 +358,12 @@ NUM_DOCTO_PROPRIED - Código da Pasta
 NR_DOCUMENTO - Código do Fomulário
 ```
 
+A função voltarTop() executa a rolagem automática da página para o topo, garantindo compatibilidade tanto quando o código é executado dentro de um iframe quanto quando está na janela principal. 
+Ela aciona o método scrollTo(0, 0) no parent.window e no window atual, assegurando que a navegação retorne ao início da interface independentemente do contexto de execução.
+```
+function voltarTop(){
+    parent.window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
+}
+```
+
