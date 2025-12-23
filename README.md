@@ -95,6 +95,11 @@ FDN_GROUPUSERROLE - Grupos
 DOCUMENTO - Tabela que controla a versão ativa de um dataset de formulário
 SERV_DATASET - Dataset
 
+FORM
+FORM_DATASET
+FORM_PROCES__RECORD (esta armazena os registros do formulario, mas fica num campo em JSON)
+FORM_TABLE_RECORD
+
 ```
 
 <h4>Verificar usuários ativos e bloqueados</h4>
