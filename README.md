@@ -87,17 +87,18 @@ WHERE NUM_PROCES = '41761' AND NUM_SEQ_MOVTO = '12'
 ```
 EVENT_FICHA - Eventos dos formulários
 EVENT_PROCES - Eventos dos processos
-PROCES_WORKFLOW - Processos 
-FDN_USERTENANT e FDN_USER - Usuários
+PROCES_WORKFLOW - Processos
 TAR_PROCES - Responsável Processo
 WCM_PAGE - Páginas
+FDN_USERTENANT e FDN_USER - Usuários
 FDN_GROUPUSERROLE - Grupos
-DOCUMENTO - Tabela que controla a versão ativa de um dataset de formulário
+DOCUMENTO - Documentos
 SERV_DATASET - Dataset
+FDN_ACCESSLOG - Log usuário
 
 FORM
 FORM_DATASET
-FORM_PROCES__RECORD (esta armazena os registros do formulario, mas fica num campo em JSON)
+FORM_PROCES__RECORD - Está armazena os registros do formulario, mas fica num campo em JSON
 FORM_TABLE_RECORD
 
 ```
